@@ -17,5 +17,5 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function(){
-    return view('admin.index');
+    return view('layouts.admin.partials.dashboard');
 });
