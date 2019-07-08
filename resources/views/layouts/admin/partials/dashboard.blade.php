@@ -9,10 +9,12 @@
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
     <!-- breadcrumb -->
     @breadcrumb
-      <li class="breadcrumb-item" aria-current="page">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span>
-      </li>
+      @slot('slot')
+        <li class="breadcrumb-item" aria-current="page">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span>
+        </li>
+      @endslot
     @endbreadcrumb
     <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
   </div>

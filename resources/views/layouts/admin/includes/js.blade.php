@@ -8,6 +8,10 @@
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
+<!-- Ckeditor -->
+<script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}" charset="utf-8"></script>
+<script src="{{ asset('vendor/unisharp/laravel-ckeditor/adapters/jquery.js') }}" charset="utf-8"></script>
+
 <!-- Datatables  -->
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

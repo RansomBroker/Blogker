@@ -23,3 +23,7 @@ Route::get('/test', function(){
 Route::get('/test1', function(){
     return view('layouts.admin.partials.allPosts');
 });
+
+Route::get('/test2', function(){
+    return view('layouts.admin.partials.addNewPost');
+});

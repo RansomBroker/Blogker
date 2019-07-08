@@ -9,11 +9,13 @@
       <h1 class="h3 mb-0 text-gray-800">Post</h1>
       <!-- breadcrumb -->
       @breadcrumb
-        <!-- breadcrumb -->
-        <li class="breadcrumb-item" aria-current="page">
-          <i class="fa fa-thumb-tack"></i>
-          <span>Post</span>
-        </li>
+        @slot('slot')
+          <!-- breadcrumb -->
+          <li class="breadcrumb-item" aria-current="page">
+            <i class="fa fa-thumb-tack"></i>
+            <span>Post</span>
+          </li>
+        @endslot
       @endbreadcrumb
       <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>

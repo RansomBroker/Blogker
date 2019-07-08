@@ -12,3 +12,7 @@
 
 <!-- Custom styles for this template-->
 <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+<script src="{{ asset('assets/js/jquery-3.4.1.min.js') }}" charset="utf-8"></script>
+<script src="{{ asset('assets/js/datepicker.min.js') }}"></script>
+<script src="{{ asset('assets/js/i18n/datepicker.en.js') }}" charset="utf-8"></script>
