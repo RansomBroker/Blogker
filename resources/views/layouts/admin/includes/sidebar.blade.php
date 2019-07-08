@@ -11,20 +11,24 @@
 
   <!-- Divider -->
   <hr class="sidebar-divider my-0 mt-2">
+
   <!-- menu -->
   <div class="sidebar-heading">
     Main Menu
   </div>
 
   <!-- Nav Item - Dashboard -->
-  <li class="nav-item">
-    <a class="nav-link" href="index.html">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Dashboard</span></a>
-  </li>
+  @navItem
+    @slot('slot')
+      <a class="nav-link" href="index.html">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span>
+      </a>
+    @endslot
+  @endnavItem
 
   <!-- Nav Item - Post collapsePages-->
-  <li class="nav-item">
+  @navItem
     <a href="#" class="nav-link collapsed" data-toggle="collapse" data-target="#postsCollapse" aria-expanded="true" aria-controls="postsCollapse">
       <i class="fa fa-pencil"></i>
       <span>Post</span>
@@ -39,10 +43,10 @@
         <a href="#" class="collapse-item">Tags</a>
       </div>
     </div>
-  </li>
+  @endnavItem
 
   <!-- Nav Item - Pages -->
-  <li class="nav-item">
+  @navItem
     <a href="#" class="nav-link collapsed" data-toggle="collapse" data-target="#pagesCollapse" aria-expanded="true" aria-controls="pagesCollapse">
       <i class="fa fa-file"></i>
       <span>Pages</span>
@@ -55,10 +59,10 @@
         <a href="#" class="collapse-item">Add new</a>
       </div>
     </div>
-  </li>
+  @endnavItem
 
   <!-- Nav Item - User -->
-  <li class="nav-item">
+  @navItem
     <a href="#" class="nav-link collapsed" data-toggle="collapse" data-target="#usersCollapse" aria-expanded="true" aria-controls="usersCollapse">
       <i class="fa fa-user"></i>
       <span>Users</span>
@@ -72,8 +76,13 @@
         <a href="#" class="collapse-item">Profile</a>
       </div>
     </div>
-  </li>
+  @endnavItem
 
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0 mt-4 mb-4">
+
+  <!-- see the blog -->
+  <button type="button" name="button" class="btn btn-sm btn-info ml-3 mr-3">See Blog</button>
 
 </ul>
 <!-- End of Sidebar -->

@@ -19,3 +19,7 @@ Route::get('/', function () {
 Route::get('/test', function(){
     return view('layouts.admin.partials.dashboard');
 });
+
+Route::get('/test1', function(){
+    return view('layouts.admin.partials.allPosts');
+});

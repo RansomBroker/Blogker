@@ -19,7 +19,9 @@
         <!-- topbar -->
         @include('layouts.admin.includes.topbar')
         <div id="content">
-          @yield('content')
+          <div class="container-fluid">
+            @yield('content')
+          </div>
         </div>
 
       </div>
@@ -27,7 +29,7 @@
     </div>
 
 
-    @include('layouts.admin.includes.js')
+
 
   </body>
 </html>
