@@ -9,14 +9,14 @@
     @slot('divClass', 'd-sm-flex align-items-center justify-content-between mb-3')
 
     @slot('slot')
-      <h1 class="h3 mb-0 text-gray-800">Add New Post</h1>
+      <h1 class="h3 mb-0 text-gray-800">EditPost</h1>
       <!-- breadcrumb -->
       @breadcrumb
           @slot('slot')
             <!-- breadcrumb -->
             <li class="breadcrumb-item" aria-current="page">
               <i class="fa fa-thumb-tack"></i>
-              <span>Post/ Add New Post</span>
+              <span>Post/ Edit Post</span>
             </li>
           @endslot
       @endbreadcrumb

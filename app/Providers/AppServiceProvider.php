@@ -31,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('layouts.components.navItem', 'navItem');
         Blade::component('layouts.components.form', 'form');
         Blade::component('layouts.components.table', 'table');
+        Blade::component('layouts.components.div', 'div');
 
     }
 }

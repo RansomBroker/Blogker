@@ -8,6 +8,11 @@
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
+<!-- datepicker -->
+<script src="{{ asset('assets/js/jquery-3.4.1.min.js') }}" charset="utf-8"></script>
+<script src="{{ asset('assets/js/datepicker.min.js') }}"></script>
+<script src="{{ asset('assets/js/datepicker.en.js') }}" charset="utf-8"></script>
+
 <!-- Ckeditor -->
 <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}" charset="utf-8"></script>
 <script src="{{ asset('vendor/unisharp/laravel-ckeditor/adapters/jquery.js') }}" charset="utf-8"></script>
@@ -17,3 +22,6 @@
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js" charset="utf-8"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- select -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>

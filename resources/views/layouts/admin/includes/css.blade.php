@@ -6,13 +6,14 @@
 <!-- Datatables css -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-
-
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css">
+
+<!-- datepicker  -->
+<link href="{{ asset('assets/css/datepicker.min.css') }}" rel="stylesheet" type="text/css">
+
+<!-- select -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+
 
 <!-- Custom styles for this template-->
 <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
-
-<script src="{{ asset('assets/js/jquery-3.4.1.min.js') }}" charset="utf-8"></script>
-<script src="{{ asset('assets/js/datepicker.min.js') }}"></script>
-<script src="{{ asset('assets/js/i18n/datepicker.en.js') }}" charset="utf-8"></script>

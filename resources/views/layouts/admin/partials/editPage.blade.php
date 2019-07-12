@@ -9,14 +9,14 @@
     @slot('divClass', 'd-sm-flex align-items-center justify-content-between mb-3')
 
     @slot('slot')
-      <h1 class="h3 mb-0 text-gray-800">Add New Post</h1>
+      <h1 class="h3 mb-0 text-gray-800">Edit Page</h1>
       <!-- breadcrumb -->
       @breadcrumb
           @slot('slot')
             <!-- breadcrumb -->
             <li class="breadcrumb-item" aria-current="page">
               <i class="fa fa-thumb-tack"></i>
-              <span>Post/ Add New Post</span>
+              <span>Post/ Edit Page</span>
             </li>
           @endslot
       @endbreadcrumb
@@ -34,14 +34,14 @@
         @slot('formAditional', '')
 
         @slot('slot')
-            <p class="text-gray-800 font-weight-bold">Post Headline</p>
+            <p class="text-gray-800 font-weight-bold">Page Headline</p>
             <!-- post title -->
-            <input type="text" class="form-control mb-2" name="" value="" placeholder="Post Title">
+            <input type="text" class="form-control mb-2" name="" value="" placeholder="Page Title">
             <!-- ckeditor -->
             <textarea name="text-ckeditor" id="text-ckeditor"></textarea>
 
             <!-- card settingg -->
-            <h1 class="h4 mb-2 mt-5 font-weight-bold text-gray-800">Post Setting</h1>
+            <h1 class="h4 mb-2 mt-5 font-weight-bold text-gray-800">Page Setting</h1>
 
             @div
               @slot('divClass', 'd-flex flex-warp')
@@ -96,51 +96,15 @@
                       <option value="AdminLaen">AdminLaen</option>
                     </select>
 
+                    <div class="d-flex justify-content-center">
+                      <!-- btn submit -->
+                      <button type="submit" name="button" class="btn btn-primary mt-2 mb-3 w-75">Add New Page</button>
+                    </div>
 
                   @endslot
                 @enddiv
-
-                <!-- Categories and tags -->
-                @div
-                  @slot('divClass', 'card rounded shadow ml-3 w-50 mb-3')
-                  @slot('slot')
-                    <!-- title  -->
-                    @div
-                      @slot('divClass', 'h6 ml-3 font-weight-bold text-gray-800 mt-3')
-                      @slot('slot')
-                        Categories & tags
-                      @endslot
-                    @enddiv
-
-                    <!-- Categories -->
-                    <p class="ml-3 mt-2 text-gray-800">Categories</p>
-                    <select class="custom-select w-75 mb-3 ml-3" name="">
-                      <option selected></option>
-                      <option value="cat1">Laravel</option>
-                      <option value="cat2">Python</option>
-                    </select>
-
-                    <!-- Tags -->
-                    <p class="ml-3 mt-2 text-gray-800">Tags</p>
-                    @div
-                      @slot('divClass','ml-3 mb-3 w-100')
-                      @slot('slot')
-                        <select class="js-example-basic-multiple custom-select  border w-75  border-secondary" multiple="multiple" name="">
-                          <option value="cat1">Laravel</option>
-                          <option value="cat2">Python</option>
-                        </select>
-                      @endslot
-                    @enddiv
-
-                  @endslot
-                @enddiv
-
               @endslot
             @enddiv
-
-            <!-- btn submit -->
-            <button type="submit" name="button" class="btn btn-primary mt-5 mb-5">Publish</button>
-
         @endslot
       @endform
     </div>

@@ -40,7 +40,6 @@
         <a href="#" class="collapse-item">All Post</a>
         <a href="#" class="collapse-item">Add New Post</a>
         <a href="#" class="collapse-item">Categories</a>
-        <a href="#" class="collapse-item">Tags</a>
       </div>
     </div>
   @endnavItem
