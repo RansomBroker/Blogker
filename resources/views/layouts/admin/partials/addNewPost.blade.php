@@ -49,7 +49,7 @@
               @slot('slot')
                 <!-- status and Visibility -->
                 @div
-                  @slot('divClass', 'card rounded shadow mr-3 mb-3 w-50')
+                  @slot('divClass', 'card rounded shadow mr-1 mb-2 w-50')
                   @slot('slot')
                     <!-- title  -->
                     @div
@@ -62,7 +62,7 @@
                     <p class="ml-3 text-gray-800 mt-2">Visibility</p>
                     <!-- Title : Content -->
                     @div
-                      @slot('divClass', 'form-inline')
+                      @slot('divClass', 'form-inline p-2')
                       @slot('slot')
 
                         @div

@@ -46,10 +46,9 @@
             @div
               @slot('divClass', 'd-flex flex-warp')
 
-              @slot('slot')
                 <!-- status and Visibility -->
                 @div
-                  @slot('divClass', 'card rounded shadow mr-3 mb-3 w-50')
+                  @slot('divClass', 'card rounded shadow mr-3 mb-3 w-50 col-12 col-xl-12')
                   @slot('slot')
                     <!-- title  -->
                     @div
@@ -103,7 +102,6 @@
 
                   @endslot
                 @enddiv
-              @endslot
             @enddiv
         @endslot
       @endform

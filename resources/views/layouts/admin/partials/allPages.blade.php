@@ -23,7 +23,7 @@
     <div class="row">
 
       <!-- table -->
-      <div class="col-xl-12 table-responsive-xl mr-auto">
+      <div class="col-md-12 table-responsive-md mr-auto mb-4 mt-2 ml-2">
         @table
           @slot('tableClass', 'table table-active table-striped table-sm table-bordered table-hover text-gray-800 shadow')
           @slot('tableId', 'table')

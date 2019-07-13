@@ -44,12 +44,12 @@
             <h1 class="h4 mb-2 mt-5 font-weight-bold text-gray-800">Page Setting</h1>
 
             @div
-              @slot('divClass', 'd-flex flex-warp')
+              @slot('divClass', 'd-flex justify-start')
 
               @slot('slot')
                 <!-- status and Visibility -->
                 @div
-                  @slot('divClass', 'card rounded shadow mr-3 mb-3 w-50')
+                  @slot('divClass', 'card rounded shadow mr-3 mb-3 w-50 col-12 col-xl-12')
                   @slot('slot')
                     <!-- title  -->
                     @div

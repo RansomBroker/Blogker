@@ -27,11 +27,11 @@
       <!-- Categories Field -->
       <!-- add New Categories-->
       @div
-        @slot('divClass', 'd-flex justify-content-center ')
+        @slot('divClass', 'd-flex flex-wrap')
         @slot('slot')
           <!-- add new Categories -->
           @div
-            @slot('divClass', 'card shadow rounded col-lg-4 col-xl-4')
+            @slot('divClass', 'card shadow rounded col-12 col-lg-4 ml-2 mt-2')
             @slot('slot')
               @div
                 @slot('divClass', 'card-body p-4')
@@ -72,7 +72,7 @@
 
           <!-- show Table -->
           @div
-            @slot('divClass', 'card shadow rounded ml-2 col-lg-8 col-xl-8')
+            @slot('divClass', 'card shadow rounded col-12 col-lg-7 mt-2 ml-2')
             @slot('slot')
               @div
                 @slot('divClass', 'card-body p-3')

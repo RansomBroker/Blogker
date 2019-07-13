@@ -39,7 +39,7 @@
                 <small>Create a new user and add them to this site.</small>
                 <!-- table input -->
                 @table
-                  @slot('tableClass', 'table table-borderless col-lg-8')
+                  @slot('tableClass', 'table table-borderless table-responsive col-lg-8')
                   @slot('tableId', 'table')
                   @slot('tableAditional', '')
                   @slot('tableHead', '')
