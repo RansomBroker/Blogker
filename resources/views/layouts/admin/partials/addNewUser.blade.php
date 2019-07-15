@@ -25,10 +25,10 @@
       <div class="col-xl-12">
         @form
           @slot('formClass', '')
-          @slot('formAction', '')
-          @slot('formMethod', '')
-          @slot('formAditional', '')
+          @slot('formAction', 'register')
+          @slot('formMethod', 'POST')
           @slot('slot')
+            @csrf
             @cardNoHeadTitle
               @slot('card', 'card rounded shadow mb-5')
               @slot('cardBody', 'card-body p-4')
@@ -47,19 +47,37 @@
                     <!-- username -->
                     <tr>
                       <td><label for="username" class="mr-2 text-dark font-weight-bold">Username (required)<span><small class="text-danger">*</small> </span> </label></td>
-                      <td><input type="text" name="" value="" id="username" class="form-control form-control-sm"></td>
+                      <td><input type="text" name="username" value="{{ old('username') }}" id="username" class="form-control form-control-sm {{ $errors->has('username') ? 'is-invalid' : '' }}">
+                        @if($errors->has('username'))
+                            <div class="invalid-feedback">
+                                It must be fill
+                            </div>
+                        @endif
+                      </td>
                     </tr>
 
                     <!-- Email -->
                     <tr>
                       <td><label for="email" class="mr-2 text-dark font-weight-bold">Email (required)<span><small class="text-danger">*</small> </span></label></td>
-                      <td><input type="text" name="" value="" id="email" class="form-control form-control-sm"></td>
+                      <td><input type="text" name="email" value="{{ old('email') }}" id="email" class="form-control form-control-sm {{ $errors->has('email') ? 'is-invalid' : '' }}">
+                        @if($errors->has('email'))
+                            <div class="invalid-feedback">
+                                It must be fill
+                            </div>
+                        @endif
+                      </td>
                     </tr>
 
                     <!-- name -->
                     <tr>
                       <td><label for="name" class="mr-2 text-dark font-weight-bold">Name<span><small class="text-danger">*</small> </span></label></td>
-                      <td><input type="text" name="" value="" id="name" class="form-control form-control-sm"></td>
+                      <td><input type="text" name="name" value="{{ old('name') }}" id="name" class="form-control form-control-sm {{ $errors->has('name') ? 'is-invalid' : '' }}">
+                        @if($errors->has('name'))
+                            <div class="invalid-feedback">
+                                It must be fill
+                            </div>
+                        @endif
+                      </td>
                     </tr>
 
                     <!-- Bio-->
@@ -67,38 +85,67 @@
                       <td><label for="bio" class="mr-2 text-dark font-weight-bold">Description<span><small class="text-danger">*</small> </span></label>
                       <p> <small>it must fill, and it will appear in who author post</small> </p>
                       </td>
-                      <td><textarea class="form-control" rows="2" id="bio"></textarea></td>
+                      <td><textarea class="form-control {{ $errors->has('bio') ? 'is-invalid' : '' }}" name="bio" rows="2" id="bio"></textarea>
+                        @if($errors->has('bio'))
+                            <div class="invalid-feedback">
+                                It must be fill
+                            </div>
+                        @endif
+                      </td>
                     </tr>
 
                     <!-- password -->
                     <tr>
                       <td><label for="password" class="mr-2 text-dark font-weight-bold">Password<span><small class="text-danger">*</small> </span></label></td>
-                      <td><input type="password" name="" value="" id="password" class="form-control form-control-sm"></td>
+                      <td><input type="password" name="password" value="" id="password" class="form-control form-control-sm {{ $errors->has('password') ? 'is-invalid' : '' }}">
+                        @if($errors->has('password'))
+                            <div class="invalid-feedback">
+                                At least 8 charachter
+                            </div>
+                        @endif
+                      </td>
                     </tr>
 
                     <!-- password confirm -->
                     <tr>
-                      <td><label for="password-confirm" class="mr-2 text-dark font-weight-bold">Password Confirmation<span><small class="text-danger">*</small> </span></label></td>
-                      <td><input type="password" value="" id="password-confirm" class="form-control form-control-sm"></td>
+                      <td><label for="password_confirmation" class="mr-2 text-dark font-weight-bold">Password Confirmation<span><small class="text-danger">*</small> </span></label></td>
+                      <td><input type="password" value="" name="password_confirmation" id="password-confirm" class="form-control form-control-sm {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
+                        @if($errors->has('password_confirmation'))
+                            <div class="invalid-feedback">
+                                Password does not match
+                            </div>
+                        @endif
+                      </td>
                     </tr>
 
                     <!-- role -->
                     <tr>
                       <td><label for="role" class="mr-2 text-dark font-weight-bold">Role<span><small class="text-danger">*</small> </span></label></td>
                       <td>
-                        <select class="custom-select" name="" id="role">
-                          <option value="">Author</option>
-                          <option value="">Admin</option>
+                        <select class="custom-select {{ $errors->has('role') ? 'is-invalid' : '' }}" name="role" id="role">
+                          <option value="1,author">Author</option>
+                          <option value="2,admin">Admin</option>
                         </select>
+                        @if($errors->has('password_confirm'))
+                            <div class="invalid-feedback">
+                                it must be selected
+                            </div>
+                        @endif
                       </td>
                     </tr>
 
                     <!-- upload profile picture -->
                     <tr>
                       <td> <label for="upload-picture" class="mr-2 text-dark font-weight-bold">Upload Profile Picture<span><small class="text-danger">*</small> </span></label> </td>
-                      <td> <input type="file" name="" value="" id="upload-picture">
+                      <td> <input type="file" name="upload-picture" value="" class="{{ $errors->has('upload-picture') ? 'is-invalid' : '' }}" id="upload-picture">
                       <!-- after upload they will apear preview -->
-                      <img class="mt-2" src="https://via.placeholder.com/86x86?text=Image+Preview/ " alt=""></td>
+                      <img id="image-preview" class="mt-2" width="86px" src="https://via.placeholder.com/86x86?text=Image+Preview/ " alt="">
+                        @if($errors->has('upload-profile'))
+                            <div class="invalid-feedback">
+                                You must have profile picture
+                            </div>
+                        @endif
+                    </td>
 
 
                     </tr>
@@ -123,6 +170,21 @@
 
     <!-- js -->
     @include('layouts.admin.includes.js')
+    <script>
+      function readURL(input){
+        if(input.files && input.files[0]){
+          var reader = new FileReader();
+          reader.onload = function(e){
+            $('#image-preview').attr('src', e.target.result);
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+
+      $('#upload-picture').change(function(){
+        readURL(this);
+      });
+    </script>
 
 
 @endsection

@@ -1,3 +1,3 @@
-<form class="{{ $formClass }}" action="{{ $formAction }}" method="{{ $formMethod }}" {{ $formAditional }}>
+<form class="{{ $formClass }}" action="{{ route($formAction) }}" method="{{ $formMethod }}" enctype="multipart/form-data">
   {{ $slot }}
 </form>

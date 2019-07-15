@@ -16,46 +16,61 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function(){
-    return view('layouts.admin.partials.dashboard');
-});
+// auth
+  Route::get('/bg-admin/login', function(){
+      return view('layouts.auth.partials.login');
+  })->name('login');
 
-Route::get('/test1', function(){
-    return view('layouts.admin.partials.allPosts');
-});
+// dashboard
+  Route::get('/bg-admin', function(){
+      return view('layouts.admin.partials.dashboard');
+  })->name('dashboard');
 
-Route::get('/test2', function(){
-    return view('layouts.admin.partials.addNewPost');
-});
+  Route::get('/bg-admin/dashboard', function(){
+      return view('layouts.admin.partials.dashboard');
+  })->name('dashboard');
 
-Route::get('/test3', function(){
-    return view('layouts.admin.partials.categories');
-});
+// post
+  Route::get('/bg-admin/post/allposts', function(){
+      return view('layouts.admin.partials.allPosts');
+  })->name('allPosts');
 
-Route::get('/test4', function(){
-    return view('layouts.admin.partials.allPages');
-});
+  Route::get('/bg-admin/post/addnewpost', function(){
+      return view('layouts.admin.partials.addNewPost');
+  })->name('addNewPost');
 
-Route::get('/test5', function(){
-    return view('layouts.admin.partials.addNewPage');
-});
+  Route::get('/bg-admin/post/categories', function(){
+      return view('layouts.admin.partials.categories');
+  })->name('categories');
 
-Route::get('/test6', function(){
-    return view('layouts.admin.partials.allUsers');
-});
+  Route::get('/bg-admin/post/editpost', function(){
+      return view('layouts.admin.partials.editPost');
+  })->name('editPost');
 
-Route::get('/test7', function(){
-    return view('layouts.admin.partials.addNewUser');
-});
+// page
+  Route::get('/bg-admin/page/allpages', function(){
+      return view('layouts.admin.partials.allPages');
+  })->name('allPages');
 
-Route::get('/test8', function(){
-    return view('layouts.admin.partials.userProfile');
-});
+  Route::get('/bg-admin/page/addnewpage', function(){
+      return view('layouts.admin.partials.addNewPage');
+  })->name('addNewPage');
 
-Route::get('/test9', function(){
-    return view('layouts.admin.partials.editPost');
-});
+  Route::get('/bg-admin/page/editpage', function(){
+      return view('layouts.admin.partials.editPage');
+  })->name('editPage');
 
-Route::get('/test10', function(){
-    return view('layouts.admin.partials.editPage');
-});
+// user
+  Route::get('/bg-admin/user/allusers', function(){
+      return view('layouts.admin.partials.allUsers');
+  })->name('allUsers');
+
+  Route::get('/bg-admin/user/addnewuser', function(){
+      return view('layouts.admin.partials.addNewUser');
+  })->name('addNewUser');
+
+  Route::get('/bg-admin/user/userprofile', function(){
+      return view('layouts.admin.partials.userProfile');
+  })->name('userProfile');
+
+  Route::post('/bg-admin/user/addNewUser/register', 'AuthController@register')->name('register');

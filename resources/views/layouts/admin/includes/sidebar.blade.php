@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-asphalt sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center mt-2 mb-2" href="index.html">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center mt-2 mb-2" href="{{ route('dashboard') }}">
     <div class="sidebar-brand-icon">
       <i class="fa fa-book"></i>
     </div>
@@ -20,7 +20,7 @@
   <!-- Nav Item - Dashboard -->
   @navItem
     @slot('slot')
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="{{ route('dashboard') }}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span>
       </a>
@@ -37,9 +37,9 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Post Menu:</h6>
         <!-- item -->
-        <a href="#" class="collapse-item">All Post</a>
-        <a href="#" class="collapse-item">Add New Post</a>
-        <a href="#" class="collapse-item">Categories</a>
+        <a href="{{ route('allPosts') }}" class="collapse-item">All Post</a>
+        <a href="{{ route('addNewPost') }}" class="collapse-item">Add New Post</a>
+        <a href="{{ route('categories') }}" class="collapse-item">Categories</a>
       </div>
     </div>
   @endnavItem
@@ -54,8 +54,8 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Pages Menu:</h6>
         <!-- item -->
-        <a href="#" class="collapse-item">All Page</a>
-        <a href="#" class="collapse-item">Add new</a>
+        <a href="{{ route('allPages') }}" class="collapse-item">All Page</a>
+        <a href="{{ route('addNewPage') }}" class="collapse-item">Add New Page</a>
       </div>
     </div>
   @endnavItem
@@ -70,9 +70,9 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Users Menu:</h6>
         <!-- item -->
-        <a href="#" class="collapse-item">All Users</a>
-        <a href="#" class="collapse-item">Add New</a>
-        <a href="#" class="collapse-item">Profile</a>
+        <a href="{{ route('allUsers') }}" class="collapse-item">All Users</a>
+        <a href="{{ route('addNewUser') }}" class="collapse-item">Add New User</a>
+        <a href="{{ route('userProfile') }}" class="collapse-item">User Profile</a>
       </div>
     </div>
   @endnavItem
@@ -81,7 +81,7 @@
   <hr class="sidebar-divider my-0 mt-4 mb-4">
 
   <!-- see the blog -->
-  <button type="button" name="button" class="btn btn-sm btn-info ml-3 mr-3">See Blog</button>
+  <a href="" name="button" class="btn btn-sm btn-info ml-3 mr-3">See Blog</a>
 
 </ul>
 <!-- End of Sidebar -->
