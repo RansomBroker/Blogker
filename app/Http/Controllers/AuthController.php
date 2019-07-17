@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
 use App\User;
 
 class AuthController extends Controller
 {
     //
+
+    public function showAllUser(){
+      $user = User::get();
+
+      return view('layouts.admin.partials.allUsers', ['user' => $user]);
+    }
 
     public function register(Request $request){
       // validate request
@@ -48,5 +55,31 @@ class AuthController extends Controller
 
       return redirect()->route('dashboard');
 
+    }
+
+    public function editProfileView(){
+      return view('layouts.admin.partials.userProfile');
+    }
+
+    public function editProfileId($userId){
+      $user = User::where('id_user', $userId)->get();
+      $data = ['user' => $user];
+      return view('layouts.admin.partials.userProfile', $data);
+    }
+
+    public function login(Request $request){
+
+      if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+        // code...
+        // return dd(Auth::attempt(['username' => $request->username, 'password' => $request->password]));
+        return redirect()->route('dashboard');
+      }
+        return redirect()->back();
+
+    }
+
+    public function logout(){
+      Auth::logout();
+      return redirect()->route('blogDashboard');
     }
 }

@@ -30,7 +30,7 @@
           @slot('slot')
             @csrf
             @cardNoHeadTitle
-              @slot('card', 'card rounded shadow mb-5')
+              @slot('card', 'card rounded shadow mb-5 col-sm-12 col-md-12 col-lg-12')
               @slot('cardBody', 'card-body p-4')
               @slot('slot')
                 <!-- title user -->
@@ -39,7 +39,7 @@
                 <small>Create a new user and add them to this site.</small>
                 <!-- table input -->
                 @table
-                  @slot('tableClass', 'table table-borderless table-responsive-lg col-sm-6 col-lg-8')
+                  @slot('tableClass', 'table table-borderless table-responsive-sm ')
                   @slot('tableId', 'table')
                   @slot('tableAditional', '')
                   @slot('tableHead', '')

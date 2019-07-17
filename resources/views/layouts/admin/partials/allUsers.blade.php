@@ -42,137 +42,43 @@
           @endslot
           @slot('slot')
             <!-- data -->
-            <tr>
-              <td class="pl-3" >
-                <a href="#" class="text-decoration-none">
-                  <img src="https://via.placeholder.com/64x64.png?text=User+Profile/" alt="">
-                   Yadis
-                </a>
-              </td>
-              <td>
-                <a href="#" class="text-decoration-none">Yadistira Fajar Ramadhan
-                </a>
-              </td>
-              <td>
-                <a href="#" class="text-decoration-none">yadisoke@gmail.com</a>
-              </td>
-              <td>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.derit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              </td>
-              <td>
-                <a href="#" class="text-decoration-none">Admin</a>
-              </td>
-              <td>
-                <a href="#" class="text-decoration-none">5</a>
-              </td>
-              <td>
-                <a href="#" class="text-primary text-decoration-none">
-                    Edit &#124;
-                </a>
-                <a href="#" class="text-danger text-decoration-none">
-                    Delete &#124;
-                </a>
-              </td>
-            </tr>
+            @foreach($user as $user)
+              <tr>
+                <td class="pl-3" >
+                  <a href="#" class="text-decoration-none">
+                    <img src="{{ asset('img/profile/'.$user->image_profile) }}" class="rounded" style="width:64px; height:64px;" alt="">
+                     {{ $user->username }}
+                  </a>
+                </td>
+                <td>
+                  <a href="#" class="text-decoration-none">{{ $user->name }}
+                  </a>
+                </td>
+                <td>
+                  <a href="#" class="text-decoration-none">{{ $user->email }}</a>
+                </td>
+                <td>
+                  <p>{{ $user->description }}</p>
+                </td>
+                <td>
+                  <a href="#" class="text-decoration-none">{{ $user->role_name }}</a>
+                </td>
+                <td>
+                  <a href="#" class="text-decoration-none">{{ 0 }}</a>
+                </td>
+                <td>
+                  @if(auth()->user()->role == 2)
+                    <a href="{{ route('getUserId', $user->id_user) }}" class="text-primary text-decoration-none">
+                        Edit &#124;
+                    </a>
 
-            <tr>
-              <td class="pl-3" >
-                <a href="#" class="text-decoration-none">
-                  <img src="https://via.placeholder.com/64x64.png?text=User+Profile/" alt="">
-                   Yadis
-                </a>
-              </td>
-              <td>
-                <a href="#" class="text-decoration-none">Yadistira Fajar Ramadhan
-                </a>
-              </td>
-              <td>
-                <a href="#" class="text-decoration-none">yadisoke@gmail.com</a>
-              </td>
-              <td>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Dui</p>
-              </td>
-              <td>
-                <a href="#" class="text-decoration-none">Admin</a>
-              </td>
-              <td>
-                <a href="#" class="text-decoration-none">5</a>
-              </td>
-              <td>
-                <a href="#" class="text-primary text-decoration-none">
-                    Edit &#124;
-                </a>
-                <a href="#" class="text-danger text-decoration-none">
-                    Delete &#124;
-                </a>
-              </td>
-            </tr>
-
-            <tr>
-              <td class="pl-3" >
-                <a href="#" class="text-decoration-none">
-                  <img src="https://via.placeholder.com/64x64.png?text=User+Profile/" alt="">
-                   Yadis
-                </a>
-              </td>
-              <td>
-                <a href="#" class="text-decoration-none">Yadistira Fajar Ramadhan
-                </a>
-              </td>
-              <td>
-                <a href="#" class="text-decoration-none">yadisoke@gmail.com</a>
-              </td>
-              <td>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.derit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              </td>
-              <td>
-                <a href="#" class="text-decoration-none">Admin</a>
-              </td>
-              <td>
-                <a href="#" class="text-decoration-none">5</a>
-              </td>
-              <td>
-                <a href="#" class="text-primary text-decoration-none">
-                    Edit &#124;
-                </a>
-                <a href="#" class="text-danger text-decoration-none">
-                    Delete &#124;
-                </a>
-              </td>
-            </tr>
-
-            <tr>
-              <td class="pl-3" >
-                <a href="#" class="text-decoration-none">
-                  <img src="https://via.placeholder.com/64x64.png?text=User+Profile/" alt="">
-                   Yadis
-                </a>
-              </td>
-              <td>
-                <a href="#" class="text-decoration-none">Yadistira Fajar Ramadhan
-                </a>
-              </td>
-              <td>
-                <a href="#" class="text-decoration-none">yadisoke@gmail.com</a>
-              </td>
-              <td>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.derit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              </td>
-              <td>
-                <a href="#" class="text-decoration-none">Admin</a>
-              </td>
-              <td>
-                <a href="#" class="text-decoration-none">5</a>
-              </td>
-              <td>
-                <a href="#" class="text-primary text-decoration-none">
-                    Edit &#124;
-                </a>
-                <a href="#" class="text-danger text-decoration-none">
-                    Delete &#124;
-                </a>
-              </td>
-            </tr>
+                    <a href="#" class="text-danger text-decoration-none">
+                        Delete &#124;
+                    </a>
+                  @endif
+                </td>
+              </tr>
+            @endforeach
 
 
             <tfoot class="font-weight-bold">
