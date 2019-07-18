@@ -71,6 +71,15 @@
                     <a href="{{ route('getUserId', $user->id_user) }}" class="text-primary text-decoration-none">
                         Edit &#124;
                     </a>
+                    <a href="#" class="text-danger text-decoration-none">
+                        Delete &#124;
+                    </a>
+                  @endif
+                  @endforeach
+                  @if(auth()->user()->id_user == Auth::id())
+                    <a href="{{ route('getUserId', $user->id_user) }}" class="text-primary text-decoration-none">
+                        Edit &#124;
+                    </a>
 
                     <a href="#" class="text-danger text-decoration-none">
                         Delete &#124;
@@ -78,7 +87,7 @@
                   @endif
                 </td>
               </tr>
-            @endforeach
+
 
 
             <tfoot class="font-weight-bold">

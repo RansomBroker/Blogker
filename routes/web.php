@@ -35,6 +35,10 @@ Route::group(['middleware' => ['auth', 'authCheckRole:2', 'disableBackButton']],
 
 Route::group(['middleware' => ['auth', 'authCheckRole:1, 2', 'disableBackButton']], function(){
   // dashboard
+    Route::get('/bg-admin', function(){
+        return view('layouts.admin.partials.dashboard');
+    })->name('dashboard');
+
     Route::get('/bg-admin/dashboard', function(){
         return view('layouts.admin.partials.dashboard');
     })->name('dashboard');
