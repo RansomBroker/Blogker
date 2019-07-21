@@ -26,7 +26,7 @@ class AuthController extends Controller
         'bio' => 'required',
         'password' => 'required|min:8|confirmed',
         'role' => 'required',
-        'upload-picture' => 'required',
+        'upload-picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
       ]);
 
       // explode the role to array
@@ -65,6 +65,46 @@ class AuthController extends Controller
       $user = User::where('id_user', $userId)->get();
       $data = ['user' => $user];
       return view('layouts.admin.partials.userProfile', $data);
+    }
+
+    public function editProfile(Request $request){
+      $validateData = $request->validate([
+        'username' => 'required',
+        'email' => 'required',
+        'bio' => 'required',
+        'password' => 'required|min:8|confirmed',
+        'role' => 'required',
+        'upload-picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      ]);
+      // dd($request->file('upload-picture'));
+
+      // explode the role to array
+      $role = explode(",", $request->role);
+      // dd($role[0]);
+      // destination
+      $destinationUpload = 'img/profile';
+
+      // storage to variable
+      $fileUploadPicture = $request->file('upload-picture');
+      // dd($fileUploadPicture);
+      // create new name of file
+      $profilePictureName = time()."_".$fileUploadPicture->getClientOriginalName();
+      // uplaoad it
+      $fileUploadPicture->move($destinationUpload, $profilePictureName);
+
+      $updateProfile = User::find($request->userId);
+      $updateProfile->role = $role[0];
+      $updateProfile->image_profile = $profilePictureName;
+      $updateProfile->username = $request->username;
+      $updateProfile->email = $request->email;
+      $updateProfile->password = $request->password;
+      $updateProfile->description = $request->bio;
+      $updateProfile->role_name = $role[1];
+      $updateProfile->save();
+
+
+      return redirect()->route('allUsers');
+
     }
 
     public function login(Request $request){

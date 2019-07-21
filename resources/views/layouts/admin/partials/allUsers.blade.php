@@ -76,7 +76,7 @@
                     </a>
                   @endif
                   @endforeach
-                  @if(auth()->user()->id_user == Auth::id())
+                  @if(auth()->user()->id_user == Auth::id() && auth()->user()->role != 2)
                     <a href="{{ route('getUserId', $user->id_user) }}" class="text-primary text-decoration-none">
                         Edit &#124;
                     </a>

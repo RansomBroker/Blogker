@@ -29,12 +29,13 @@
           @slot('formMethod', 'post')
           @slot('formAditional', '')
           @slot('slot')
+            @csrf
             @cardNoHeadTitle
               @slot('card', 'card rounded shadow mb-5')
               @slot('cardBody', 'card-body p-4')
               @slot('slot')
                 <!-- title user -->
-                <p class="h5 text-gray-800 font-weight-bold">U0se Profile</p>
+                <p class="h5 text-gray-800 font-weight-bold">User Profile</p>
                 <!-- desc -->
                 <small>Create a new user and add them to this site.</small>
                 <!-- table input -->
@@ -45,18 +46,31 @@
                   @slot('tableHead', '')
                   @slot('slot')
                     @foreach($user as $user)
+                        <!-- id -->
+                        <input type="hidden" name="userId" value="{{ $user->id_user }}">
                         <!-- username -->
                         <tr>
-                          <td><label for="username" class="mr-2 text-dark font-weight-bold">Username</label></td>
-                          <td><input type="text" name="" value="{{ $user->username }}" id="username" class="form-control form-control-sm">
+                          <td><label for="username" class="mr-2 text-dark font-weight-bold">Username<span><small class="text-danger">*</small> </span></label></td>
+                          <td><input type="text" name="username" value="{{ $user->username }}" id="username" class="form-control form-control-sm {{ $errors->has('username') ? 'is-invalid' : '' }}">
+                            @if($errors->has('username'))
+                                <div class="invalid-feedback">
+                                    It must be fill
+                                </div>
+                            @endif
                           </td>
 
                         </tr>
 
                         <!-- Email -->
                         <tr>
-                          <td><label for="email" class="mr-2 text-dark font-weight-bold">Email (required)</label></td>
-                          <td><input type="text" name="" value="{{ $user->email }}" id="email" class="form-control form-control-sm"></td>
+                          <td><label for="email" class="mr-2 text-dark font-weight-bold">Email (required<span><small class="text-danger">*</small> </span>)</label></td>
+                          <td><input type="text" name="email" value="{{ $user->email }}" id="email" class="form-control form-control-sm {{ $errors->has('email') ? 'is-invalid' : '' }}">
+                            @if($errors->has('email'))
+                                <div class="invalid-feedback">
+                                    It must be fill
+                                </div>
+                            @endif
+                          </td>
                         </tr>
 
                         <!-- name -->
@@ -70,31 +84,49 @@
 
                         <!-- Bio-->
                         <tr>
-                          <td><label for="bio" class="mr-2 text-dark font-weight-bold">Description</label>
+                          <td><label for="bio" class="mr-2 text-dark font-weight-bold">Description<span><small class="text-danger">*</small> </span></label>
                           <p> <small>it must fill, and it will appear in who author post</small> </p>
                           </td>
-                          <td><textarea class="form-control" rows="2" id="bio" placeholder="" >{{ $user->description }}</textarea></td>
+                          <td><textarea class="form-control {{ $errors->has('bio') ? 'is-invalid' : '' }}" name="bio" rows="2" id="bio" placeholder="" >{{ $user->description }}</textarea>
+                            @if($errors->has('bio'))
+                                <div class="invalid-feedback">
+                                    It must be fill
+                                </div>
+                            @endif
+                          </td>
                         </tr>
 
                         <!-- password -->
                         <tr>
-                          <td><label for="password" class="mr-2 text-dark font-weight-bold">Password </label></td>
-                          <td><input type="password" name="" value="" id="password" class="form-control form-control-sm"></td>
+                          <td><label for="password" class="mr-2 text-dark font-weight-bold">Password <span><small class="text-danger">*</small> </span></label></td>
+                          <td><input type="password" name="password" value="" id="password" class="form-control form-control-sm {{ $errors->has('password') ? 'is-invalid' : '' }}">
+                            @if($errors->has('password'))
+                                <div class="invalid-feedback">
+                                    At least 8 charachter
+                                </div>
+                            @endif
+                          </td>
                         </tr>
 
                         <!-- password confirm -->
                         <tr>
-                          <td><label for="password-confirm" class="mr-2 text-dark font-weight-bold">Password Confirmation </label></td>
-                          <td><input type="password" value="" id="password-confirm" class="form-control form-control-sm"></td>
+                          <td><label for="password-confirm" class="mr-2 text-dark font-weight-bold">Password Confirmation <span><small class="text-danger">*</small> </span></label></td>
+                          <td><input type="password" value="" name="password_confirmation" id="password-confirm" class="form-control form-control-sm {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
+                            @if($errors->has('password_confirmation'))
+                                <div class="invalid-feedback">
+                                    Password does not match
+                                </div>
+                            @endif
+                          </td>
                         </tr>
 
                         <!-- role -->
                         <tr>
-                          <td><label for="role" class="mr-2 text-dark font-weight-bold">Role </label></td>
+                          <td><label for="role" class="mr-2 text-dark font-weight-bold">Role <span><small class="text-danger">*</small> </span></label></td>
                           <td>
-                            <select class="custom-select" name="" id="role">
-                              <option value="">Author</option>
-                              <option value="">Admin</option>
+                            <select class="custom-select" name="role" id="role">
+                              <option value="1,author">Author</option>
+                              <option value="2,admin">Admin</option>
                             </select>
                           </td>
                         </tr>
@@ -102,9 +134,16 @@
                         <!-- upload profile picture -->
                         <tr>
                           <td> <label for="upload-picture" class="mr-2 text-dark font-weight-bold">Upload Profile Picture<span><small class="text-danger">*</small> </span></label> </td>
-                          <td> <input type="file" name="" value="" id="upload-picture">
+                          <td> <input type="file" name="upload-picture" value="{{ $user->image_profile }}" id="upload-picture"  class="{{ $errors->has('upload-picture') ? 'is-invalid' : '' }}">
                           <!-- after upload they will apear preview -->
-                          <img class="mt-2" style="width:86px; height:86px;" src="{{ asset('img/profile/'.$user->image_profile) }} " alt=""></td>
+                          <img class="image-preview mt-2" id="image-preview" style="width:86px; height:86px;" src="{{ asset('img/profile/'.$user->image_profile) }} " alt="">
+                            @if($errors->has('upload-profile'))
+                                <div class="invalid-feedback">
+                                    You must update profile picture
+                                </div>
+                            @endif
+                          <p> <small>image must change when update profile </small> </p>
+                        </td>
 
 
                         </tr>
@@ -112,7 +151,7 @@
                         <!-- btn submit -->
                         <tr>
                           <td>
-                            <button type="submit" class="btn btn-primary btn-sm" name="button">Add New user</button>
+                            <button type="submit" class="btn btn-primary btn-sm" name="button">Edit User</button>
                           </td>
                         </tr>
                     @endforeach
@@ -128,6 +167,21 @@
 
     <!-- js -->
     @include('layouts.admin.includes.js')
+    <script>
+      function readURL(input){
+        if(input.files && input.files[0]){
+          var reader = new FileReader();
+          reader.onload = function(e){
+            $('#image-preview').attr('src', e.target.result);
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+
+      $('#upload-picture').change(function(){
+        readURL(this);
+      });
+    </script>
 
 
 @endsection
