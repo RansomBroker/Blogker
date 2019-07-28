@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth', 'authCheckRole:1, 2', 'disableBackButton'
     Route::get('/bg-admin/post/addnewpost', function(){
         return view('layouts.admin.partials.addNewPost');
     })->name('addNewPost');
+    Route::post('/bg-admin/post/addnewpost', 'PostController@addNewPost')->name('addNewPostProcess');
 
     Route::get('/bg-admin/post/categories', function(){
         return view('layouts.admin.partials.categories');
@@ -80,6 +81,7 @@ Route::group(['middleware' => ['auth', 'authCheckRole:1, 2', 'disableBackButton'
     Route::get('/bg-admin/user/userprofile', 'AuthController@editProfileView')->name('userProfile');
     Route::get('/bg-admin/user/userprofile/{userId}', 'AuthController@editProfileId')->name('getUserId');
     Route::post('/bg-admin/user/userprofile/editProfile', 'AuthController@editProfile')->name('editProfile');
+    Route::post('/bg-admin/user/userprofile/deleteProfile', 'AuthController@deleteProfile')->name('deleteProfile');
 
   // logout
     Route::get('/bg-admin/logout', 'AuthController@logout')->name('logout');

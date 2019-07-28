@@ -107,6 +107,14 @@ class AuthController extends Controller
 
     }
 
+    public function deleteProfile(Request $request){
+      $id = $request->id;
+      $user = User::findOrFail($id);
+      $user->delete();
+      $user = User::get();
+      return response()->json(['success'=>'user deleted successfully']);
+    }
+
     public function login(Request $request){
 
       if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {

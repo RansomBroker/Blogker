@@ -30,7 +30,7 @@
       @form
         @slot('formClass', '')
         @slot('formAction', '')
-        @slot('formMethod', '')
+        @slot('formMethod', 'POST')
         @slot('formAditional', '')
 
         @slot('slot')
