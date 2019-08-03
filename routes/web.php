@@ -11,10 +11,11 @@
 |
 */
 
-
 Route::get('/', function () {
     return view('welcome');
 })->name('blogDashboard');
+
+Route::get('/show', 'PostController@show');
 
 // auth
   Route::get('/bg-admin/login', function(){
@@ -52,6 +53,7 @@ Route::group(['middleware' => ['auth', 'authCheckRole:1, 2', 'disableBackButton'
         return view('layouts.admin.partials.addNewPost');
     })->name('addNewPost');
     Route::post('/bg-admin/post/addnewpost', 'PostController@addNewPost')->name('addNewPostProcess');
+    Route::get('/bg-admin/post/addnewpost/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
 
     Route::get('/bg-admin/post/categories', function(){
         return view('layouts.admin.partials.categories');

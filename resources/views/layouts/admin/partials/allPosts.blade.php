@@ -35,7 +35,6 @@
               <th class="pl-3">Tittle</th>
               <th>Author</th>
               <th>Categories</th>
-              <th>Tags</th>
               <th>Date</th>
               <th>Action</th>
               <th>Visibility</th>
@@ -48,12 +47,6 @@
               <td class="pl-3" > <a href="#" class="text-decoration-none">Lorem Ipsum Sir Dolor Amet</a> </td>
               <td> <a href="#" class="text-decoration-none">Yadis</a> </td>
               <td> <a href="#" class="text-decoration-none">Uncategorized</a></td>
-              <td>
-                <a href="#" class="badge badge-pill badge-primary">Laravel</a>
-                <a href="#" class="badge badge-pill badge-primary">PHP</a>
-                <a href="#" class="badge badge-pill badge-primary">MySQL</a>
-                <a href="#" class="badge badge-pill badge-primary">Botstrap</a>
-              </td>
               <td>Published 2019/06/01</td>
               <td>
                 <a href="#" class="text-primary text-decoration-none">
@@ -71,11 +64,6 @@
               <td class="pl-3" > <a href="#" class="text-decoration-none">Lorem Ipsum Sir Dolor Amet</a> </td>
               <td> <a href="#" class="text-decoration-none">Yadis</a> </td>
               <td> <a href="#" class="text-decoration-none">Uncategorized</a></td>
-              <td>
-                <a href="#" class="badge badge-pill badge-primary">Python</a>
-                <a href="#" class="badge badge-pill badge-primary">Django</a>
-                <a href="#" class="badge badge-pill badge-primary">Botstrap</a>
-              </td>
               <td>Published 2019/06/01</td>
               <td>
                 <a href="#" class="text-primary text-decoration-none">
@@ -93,12 +81,6 @@
               <td class="pl-3" > <a href="#" class="text-decoration-none">Lorem Ipsum Sir Dolor Amet</a> </td>
               <td> <a href="#" class="text-decoration-none">Yadis</a> </td>
               <td> <a href="#" class="text-decoration-none">Uncategorized</a></td>
-              <td>
-                <a href="#" class="badge badge-pill badge-primary">HTML</a>
-                <a href="#" class="badge badge-pill badge-primary">CSS</a>
-                <a href="#" class="badge badge-pill badge-primary">JavaScript</a>
-                <a href="#" class="badge badge-pill badge-primary">PHP</a>
-              </td>
               <td>Published 2019/06/01</td>
               <td>
                 <a href="#" class="text-primary text-decoration-none">
@@ -116,10 +98,6 @@
               <td class="pl-3" > <a href="#" class="text-decoration-none">Lorem Ipsum Sir Dolor Amet</a> </td>
               <td> <a href="#" class="text-decoration-none">Yadis</a> </td>
               <td> <a href="#" class="text-decoration-none">Uncategorized</a></td>
-              <td>
-                <a href="#" class="badge badge-pill badge-primary">JavaScript</a>
-                <a href="#" class="badge badge-pill badge-primary">VueJs</a>
-              </td>
               <td>Published 2019/06/01</td>
               <td>
                 <a href="#" class="text-primary text-decoration-none">
@@ -138,7 +116,6 @@
                 <td class="pl-3">Tittle</td>
                 <td>Author</td>
                 <td>Categories</td>
-                <td>Tags</td>
                 <td>Date</td>
                 <td>Action</td>
                 <td>Visibility</td>

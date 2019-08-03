@@ -29,7 +29,7 @@
     <div class="col-xl-12">
       @form
         @slot('formClass', '')
-        @slot('formAction', '')
+        @slot('formAction', 'addNewPost')
         @slot('formMethod', 'POST')
         @slot('formAditional', '')
 
@@ -120,17 +120,6 @@
                       <option value="cat2">Python</option>
                     </select>
 
-                    <!-- Tags -->
-                    <p class="ml-3 mt-2 text-gray-800">Tags</p>
-                    @div
-                      @slot('divClass','ml-3 mb-3 w-100')
-                      @slot('slot')
-                        <select class="js-example-basic-multiple custom-select  border w-75  border-secondary" multiple="multiple" name="">
-                          <option value="cat1">Laravel</option>
-                          <option value="cat2">Python</option>
-                        </select>
-                      @endslot
-                    @enddiv
 
                   @endslot
                 @enddiv
@@ -154,13 +143,13 @@
       });
     });
   </script>
-
+  <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
   <script type="text/javascript">
     CKEDITOR.replace('text-ckeditor', {
-      filebrowserImageBrowseUrl: 'blogker/laravel-filemanager?type=Images',
-      filebrowserImageUploadUrl: 'blogker/laravel-filemanager/upload?type=Images&_token=' + $("input[name=_token]").val(),
-      filebrowserBrowseUrl: 'blogker/laravel-filemanager?type=Files',
-      filebrowserUploadUrl: 'blogker/laravel-filemanager/upload?type=Files&_token=' + $("input[name=_token]").val()
+      filebrowserImageBrowseUrl: 'addnewpost/laravel-filemanager?type=Images',
+      filebrowserImageUploadUrl: 'addnewpost/laravel-filemanager/upload?type=Images&_token='+ $("input[name=_token]").val(),
+      filebrowserBrowseUrl: 'addnewpost/laravel-filemanager?type=Files',
+      filebrowserUploadUrl: 'addnewpost/laravel-filemanager/upload?type=Files&_token='+ $("input[name=_token]").val()
     });
   </script>
 

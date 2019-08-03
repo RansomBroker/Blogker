@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id_post');
             $table->string('post_title', 45);
             $table->text('post_content');
-            $table->string('post_visbility', 45);
+            $table->string('post_visibility', 45);
             $table->dateTime('post_create');
 
             $table->bigInteger('post_author')->unsigned();
