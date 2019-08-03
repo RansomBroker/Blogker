@@ -71,7 +71,7 @@
         <h6 class="collapse-header">Users Menu:</h6>
         <!-- item -->
         <a href="{{ route('allUsers') }}" class="collapse-item">All Users</a>
-        @if(auth()->user()->role == 2)
+        @if(auth()->user()->role != 2)
           <a href="{{ route('addNewUser') }}" class="collapse-item">Add New User</a>
         @endif
       </div>

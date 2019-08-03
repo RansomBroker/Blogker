@@ -67,7 +67,7 @@
                   <a href="#" class="text-decoration-none">{{ 0 }}</a>
                 </td>
                 <td>
-                  @if(auth()->user()->role == 2)
+                  @if(auth()->user()->role != 2)
                     <a href="{{ route('getUserId', $user->id_user) }}" class="text-primary text-decoration-none">
                         Edit &#124;
                     </a>
@@ -76,7 +76,7 @@
                     </button>
                   @endif
                   @endforeach
-                  @if(auth()->user()->id_user == Auth::id() && auth()->user()->role != 2)
+                  @if(auth()->user()->id_user == Auth::id() && auth()->user()->role == 2)
                     <a href="{{ route('getUserId', $user->id_user) }}" class="text-primary text-decoration-none">
                         Edit &#124;
                     </a>

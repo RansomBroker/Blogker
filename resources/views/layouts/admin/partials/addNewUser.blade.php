@@ -123,10 +123,11 @@
                       <td><label for="role" class="mr-2 text-dark font-weight-bold">Role<span><small class="text-danger">*</small> </span></label></td>
                       <td>
                         <select class="custom-select {{ $errors->has('role') ? 'is-invalid' : '' }}" name="role" id="role">
-                          <option value="1,author">Author</option>
-                          <option value="2,admin">Admin</option>
+                          @foreach( $role as $role)
+                            <option value="{{ $role->id_role }}">{{ $role->roles_name }}</option>
+                          @endforeach
                         </select>
-                        @if($errors->has('password_confirm'))
+                        @if($errors->has('role'))
                             <div class="invalid-feedback">
                                 it must be selected
                             </div>

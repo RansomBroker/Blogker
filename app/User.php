@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'role','image_profile','name', 'email', 'password', 'description', 'username', 'role_name',
+        'role','image_profile','name', 'email', 'password', 'description', 'username',
     ];
 
     /**
@@ -45,4 +45,10 @@ class User extends Authenticatable
     public function posts(){
       return $this->belongsTo('App\Post');
     }
+
+    // has many role
+    public function role(){
+      return $this->hasMany('App\Role', 'id_role', 'role');
+    }
+
 }

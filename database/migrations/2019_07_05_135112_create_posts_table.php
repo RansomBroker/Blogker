@@ -29,10 +29,10 @@ class CreatePostsTable extends Migration
             $table->bigInteger('post_categories')->unsigned();
             // still dont now why cant
             // so i turn it wit manual
-            // $table->foreign('post_categories')
-            //       ->references('id_categories')
-            //       ->on('categories')
-            //       ->onDelete('cascade');
+            $table->foreign('post_categories')
+                  ->references('id_categories')
+                  ->on('categories')
+                  ->onDelete('cascade');
 
             $table->timestamps();
         });

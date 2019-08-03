@@ -25,11 +25,9 @@ Route::get('/show', 'PostController@show');
   Route::post('/bg-admin/login', 'AuthController@login');
 
 
-Route::group(['middleware' => ['auth', 'authCheckRole:2', 'disableBackButton']], function(){
+Route::group(['middleware' => ['auth', 'authCheckRole:1', 'disableBackButton']], function(){
 
-  Route::get('/bg-admin/user/addnewuser', function(){
-      return view('layouts.admin.partials.addNewUser');
-  })->name('addNewUser');
+  Route::get('/bg-admin/user/addnewuser', 'AuthController@addNewUserView')->name('addNewUser');
   Route::post('/bg-admin/user/addNewUser/register', 'AuthController@register')->name('register');
 
 });

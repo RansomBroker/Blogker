@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
 use App\User;
+use App\Role;
 
 class AuthController extends Controller
 {
@@ -15,6 +16,12 @@ class AuthController extends Controller
       $user = User::get();
 
       return view('layouts.admin.partials.allUsers', ['user' => $user]);
+    }
+
+    public function addNewUserView(){
+      $role = Role::get();
+
+      return view('layouts.admin.partials.addNewUser', ['role' => $role]);
     }
 
     public function register(Request $request){
@@ -29,9 +36,6 @@ class AuthController extends Controller
         'upload-picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
       ]);
 
-      // explode the role to array
-      $role = explode(",", $request->role);
-
       // destination
       $destinationUpload = 'img/profile';
 
@@ -43,14 +47,13 @@ class AuthController extends Controller
       $fileUploadPicture->move($destinationUpload, $profilePictureName);
 
       User::create([
-        'role' => $role[0],
+        'role' => $request->role,
         'image_profile' => $profilePictureName,
         'name' => $request->name,
         'username' => $request->username,
         'email' => $request->email,
         'password' => bcrypt($request->password),
         'description' => $request->bio,
-        'role_name' => $role[1],
       ]);
 
       return redirect()->route('dashboard');
@@ -77,9 +80,6 @@ class AuthController extends Controller
         'upload-picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
       ]);
       // dd($request->file('upload-picture'));
-
-      // explode the role to array
-      $role = explode(",", $request->role);
       // dd($role[0]);
       // destination
       $destinationUpload = 'img/profile';
@@ -93,13 +93,12 @@ class AuthController extends Controller
       $fileUploadPicture->move($destinationUpload, $profilePictureName);
 
       $updateProfile = User::find($request->userId);
-      $updateProfile->role = $role[0];
+      $updateProfile->role = $request->role;
       $updateProfile->image_profile = $profilePictureName;
       $updateProfile->username = $request->username;
       $updateProfile->email = $request->email;
       $updateProfile->password = $request->password;
       $updateProfile->description = $request->bio;
-      $updateProfile->role_name = $role[1];
       $updateProfile->save();
 
 
