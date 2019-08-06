@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('blogDashboard');
 
-Route::get('/show', 'PostController@show');
 
 // auth
   Route::get('/bg-admin/login', function(){
@@ -47,15 +46,20 @@ Route::group(['middleware' => ['auth', 'authCheckRole:1, 2', 'disableBackButton'
         return view('layouts.admin.partials.allPosts');
     })->name('allPosts');
 
-    Route::get('/bg-admin/post/addnewpost', function(){
-        return view('layouts.admin.partials.addNewPost');
-    })->name('addNewPost');
-    Route::post('/bg-admin/post/addnewpost', 'PostController@addNewPost')->name('addNewPostProcess');
+    Route::get('/bg-admin/post/addnewpost', 'PostController@addNewPost' )->name('addNewPost');
+    Route::post('/bg-admin/post/addnewpost/addPost', 'PostController@addNewPostProcess')->name('addNewPostProcess');
+    // lfm
     Route::get('/bg-admin/post/addnewpost/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
 
-    Route::get('/bg-admin/post/categories', function(){
-        return view('layouts.admin.partials.categories');
-    })->name('categories');
+    // categories
+    Route::get('/bg-admin/post/categories', 'PostController@categoryView')->name('categories');
+    Route::post('/bg-admin/post/categories/addCategory', 'PostController@addCategoryProcess')->name('addCategoryProcess');
+    Route::post('/bg-admin/post/categories/editCategory', 'PostController@editCategoryProcess')->name('editCategoryProcess');
+    Route::post('/bg-admin/post/categories/editCategoryDesc', 'PostController@editCategoryDesc')->name('editCategoryDesc');
+    Route::post('/bg-admin/post/categories/deleteCategory', 'PostController@deleteCategory')->name('deleteCategory');
+
+
+
 
     Route::get('/bg-admin/post/editpost', function(){
         return view('layouts.admin.partials.editPost');

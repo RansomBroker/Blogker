@@ -8,11 +8,14 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css">
 
+<!-- ui -->
+
 <!-- datepicker  -->
 <link href="{{ asset('assets/css/datepicker.min.css') }}" rel="stylesheet" type="text/css">
 
 <!-- select -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+
 
 
 <!-- Custom styles for this template-->

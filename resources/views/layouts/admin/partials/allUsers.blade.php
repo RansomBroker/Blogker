@@ -145,7 +145,7 @@
       // get id
       $('.btnDelete').click(function(){
           var id = $(this).attr('id');
-          console.log(id);
+          // console.log(id);
         $('#buttonDelete').click(function(){
             $.ajax({
               type:'POST',
