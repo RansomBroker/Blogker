@@ -94,7 +94,6 @@
                           <tr>
                             <th class="pl-3">Category Name</th>
                             <th>Description</th>
-                            <th>Use</th>
                             <th>Action</th>
                           </tr>
                         @endslot
@@ -104,7 +103,6 @@
                             <tr>
                               <td> <a href="#" id="{{ $category->id_categories }}" class="modalEditClick text-decoration-none" data-toggle="modal" data-target="#modalEdit" value="{{ $category->categories_name }}">{{ $category->categories_name }}</a></td>
                               <td> <a href="#" id="{{ $category->id_categories }}" class="modalEditCategoryDesc text-decoration-none" data-toggle="modal" data-target="#modalEditCategoryDesc" value="{{ $category->categories_description }}">{{ $category->categories_description }}</a></td>
-                              <td> <a href="#" class="text-decoration-none">0</a> </td>
                               <td>
                                 <a id="{{ $category->id_categories }}" class="modalDeleteCategory text-danger text-decoration-none" data-toggle="modal" data-target="#modalDeleteCategory">
                                   Delete
@@ -117,7 +115,6 @@
                             <tr>
                               <td class="pl-3">Category Name</td>
                               <td>Description</td>
-                              <td>Use</td>
                               <td>Action</td>
                             </tr>
                           </tfoot>

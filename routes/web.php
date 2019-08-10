@@ -41,15 +41,17 @@ Route::group(['middleware' => ['auth', 'authCheckRole:1, 2', 'disableBackButton'
         return view('layouts.admin.partials.dashboard');
     })->name('dashboard');
 
-  // post
-    Route::get('/bg-admin/post/allposts', function(){
-        return view('layouts.admin.partials.allPosts');
-    })->name('allPosts');
-
+    // post
+    Route::get('/bg-admin/post/allposts', 'PostController@allPost')->name('allPosts');
+    // search in post title/ author etc
     Route::get('/bg-admin/post/addnewpost', 'PostController@addNewPost' )->name('addNewPost');
     Route::post('/bg-admin/post/addnewpost/addPost', 'PostController@addNewPostProcess')->name('addNewPostProcess');
+    Route::get('/bg-admin/post/editpost', function(){
+        return view('layouts.admin.partials.editPost');
+    })->name('editPost');
     // lfm
     Route::get('/bg-admin/post/addnewpost/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
+
 
     // categories
     Route::get('/bg-admin/post/categories', 'PostController@categoryView')->name('categories');
@@ -58,21 +60,13 @@ Route::group(['middleware' => ['auth', 'authCheckRole:1, 2', 'disableBackButton'
     Route::post('/bg-admin/post/categories/editCategoryDesc', 'PostController@editCategoryDesc')->name('editCategoryDesc');
     Route::post('/bg-admin/post/categories/deleteCategory', 'PostController@deleteCategory')->name('deleteCategory');
 
-
-
-
-    Route::get('/bg-admin/post/editpost', function(){
-        return view('layouts.admin.partials.editPost');
-    })->name('editPost');
-
   // page
-    Route::get('/bg-admin/page/allpages', function(){
-        return view('layouts.admin.partials.allPages');
-    })->name('allPages');
+    Route::get('/bg-admin/page/allpages', 'PageController@allPage')->name('allPages');
+    Route::get('/bg-admin/page/addnewpage', 'PageController@addNewPageView')->name('addNewPage');
+    Route::post('/bg-admin/page/addnewpage/process', 'PageController@addNewPageMake')->name('addNewPageProcess');
+    // lfm
+    Route::get('/bg-admin/page/addnewpage/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
 
-    Route::get('/bg-admin/page/addnewpage', function(){
-        return view('layouts.admin.partials.addNewPage');
-    })->name('addNewPage');
 
     Route::get('/bg-admin/page/editpage', function(){
         return view('layouts.admin.partials.editPage');

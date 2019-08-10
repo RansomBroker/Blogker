@@ -43,72 +43,28 @@
 
           @slot('slot')
             <tr>
-              <td></td>
-              <td class="pl-3" > <a href="#" class="text-decoration-none">Lorem Ipsum Sir Dolor Amet</a> </td>
-              <td> <a href="#" class="text-decoration-none">Yadis</a> </td>
-              <td> <a href="#" class="text-decoration-none">Uncategorized</a></td>
-              <td>Published 2019/06/01</td>
-              <td>
-                <a href="#" class="text-primary text-decoration-none">
-                  Edit &#124;
-                </a>
-                <a href="#" class="text-danger text-decoration-none">
-                  Delete &#124;
-                </a>
-              </td>
-              <td><a href="#" class="text-decoration-none">Public</a></td>
-            </tr>
+              @foreach($post as $post)
+                <td></td>
+                <td class="pl-3" > <a href="#" class="text-decoration-none">{{ $post->post_title }}</a></td>
+                @foreach($post->users as $author)
+                  <td> <a href="#" class="text-decoration-none">{{ $author->username }}</a></td>
+                @endforeach
+                @foreach($post->categories as $category)
+                  <td> <a href="#" class="text-decoration-none">{{ $category->categories_name }}</a></td>
+                @endforeach
+                <td>Published {{ $post->post_create }}</td>
+                <td>
+                  <a href="#" class="text-primary text-decoration-none">
+                    Edit &#124;
+                  </a>
+                  <a href="#" class="text-danger text-decoration-none">
+                    Delete &#124;
+                  </a>
+                </td>
+                <td><a href="#" class="text-decoration-none">{{ $post->post_visibility }}</a></td>
+              </tr>
+            @endforeach
 
-            <tr>
-              <td></td>
-              <td class="pl-3" > <a href="#" class="text-decoration-none">Lorem Ipsum Sir Dolor Amet</a> </td>
-              <td> <a href="#" class="text-decoration-none">Yadis</a> </td>
-              <td> <a href="#" class="text-decoration-none">Uncategorized</a></td>
-              <td>Published 2019/06/01</td>
-              <td>
-                <a href="#" class="text-primary text-decoration-none">
-                  Edit &#124;
-                </a>
-                <a href="#" class="text-danger text-decoration-none">
-                  Delete &#124;
-                </a>
-              </td>
-              <td><a href="#" class="text-decoration-none">Private</a></td>
-            </tr>
-
-            <tr>
-              <td></td>
-              <td class="pl-3" > <a href="#" class="text-decoration-none">Lorem Ipsum Sir Dolor Amet</a> </td>
-              <td> <a href="#" class="text-decoration-none">Yadis</a> </td>
-              <td> <a href="#" class="text-decoration-none">Uncategorized</a></td>
-              <td>Published 2019/06/01</td>
-              <td>
-                <a href="#" class="text-primary text-decoration-none">
-                  Edit &#124;
-                </a>
-                <a href="#" class="text-danger text-decoration-none">
-                  Delete &#124;
-                </a>
-              </td>
-              <td><a href="#" class="text-decoration-none">Public</a></td>
-            </tr>
-
-            <tr>
-              <td></td>
-              <td class="pl-3" > <a href="#" class="text-decoration-none">Lorem Ipsum Sir Dolor Amet</a> </td>
-              <td> <a href="#" class="text-decoration-none">Yadis</a> </td>
-              <td> <a href="#" class="text-decoration-none">Uncategorized</a></td>
-              <td>Published 2019/06/01</td>
-              <td>
-                <a href="#" class="text-primary text-decoration-none">
-                  Edit &#124;
-                </a>
-                <a href="#" class="text-danger text-decoration-none">
-                  Delete &#124;
-                </a>
-              </td>
-              <td><a href="#" class="text-decoration-none">Public</a></td>
-            </tr>
 
             <tfoot class="font-weight-bold">
               <tr>

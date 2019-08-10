@@ -11,6 +11,12 @@ use App\User;
 class PostController extends Controller
 {
     //post
+    public function allPost(){
+      $post = Post::get();
+      $result = ['post' => $post];
+      return view('layouts.admin.partials.allPosts', $result);
+    }
+
     public function addNewPost(){
       $category = Category::get();
       $user = User::get();
