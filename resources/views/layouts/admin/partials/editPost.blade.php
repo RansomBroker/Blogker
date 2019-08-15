@@ -27,122 +27,92 @@
 
   <div class="row">
     <div class="col-xl-12">
-      @form
-        @slot('formClass', '')
-        @slot('formAction', '')
-        @slot('formMethod', '')
-        @slot('formAditional', '')
+      @if($errors->any())
+        <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>Error</strong> all field must be fill.
+        </div>
+      @endif
 
-        @slot('slot')
-            <p class="text-gray-800 font-weight-bold">Post Headline</p>
-            <!-- post title -->
-            <input type="text" class="form-control mb-2" name="" value="" placeholder="Post Title">
-            <!-- ckeditor -->
-            <textarea name="text-ckeditor" id="text-ckeditor"></textarea>
+        <form class="" action="{{ route('updatePost') }}" method="POST">
+          @csrf
+          <input type="hidden" name="postId" value="{{ $post->id_post}}">
 
-            <!-- card settingg -->
-            <h1 class="h4 mb-2 mt-5 font-weight-bold text-gray-800">Post Setting</h1>
+          <p class="text-gray-800 font-weight-bold">Post Headline</p>
+          <!-- post title -->
+          <input type="text" class="form-control mb-2" name="postTitle" value="{{ $post->post_title }}" placeholder="Post Title">
+          <!-- ckeditor -->
+          <textarea name="textCkeditor" id="text-ckeditor">{{ $post->post_content }}</textarea>
 
-            @div
-              @slot('divClass', 'd-flex flex-warp')
+          <!-- card settingg -->
+          <h1 class="h4 mb-2 mt-5 font-weight-bold text-gray-800">Post Setting</h1>
 
-              @slot('slot')
-              <!-- status and Visibility -->
-              @div
-                @slot('divClass', 'card rounded shadow mr-1 mb-2 w-50')
-                @slot('slot')
-                  <!-- title  -->
-                  @div
-                    @slot('divClass', 'h6 ml-3 font-weight-bold text-gray-800 mt-3')
-                    @slot('slot')
-                      Visibility & Status
-                    @endslot
-                  @enddiv
-                  <!-- title Visibility -->
-                  <p class="ml-3 text-gray-800 mt-2">Visibility</p>
-                  <!-- Title : Content -->
-                  @div
-                    @slot('divClass', 'form-inline p-2')
-                    @slot('slot')
+          <div class="d-flex flex-warp">
+            <!-- status and Visibility -->
+            <div class="card rounded shadow mr-1 mb-2 w-50">
+              <!-- title -->
+              <div class="h6 ml-3 font-weight-bold text-gray-800 mt-3">
+                Visibility & Status
+              </div>
+              <!-- title Visibility -->
+              <p class="ml-3 text-gray-800 mt-2">Visibility</p>
+              <!-- title Visibility -->
+              <div class="form-inline p-2">
 
-                      @div
-                        @slot('divClass', 'custom-control custom-radio ml-3 mb-2')
-                        @slot('slot')
-                          <input type="radio" class="custom-control-input" id="RadioOptPublic" name="" value="">
-                          <label class="custom-control-label" for="RadioOptPublic">Public</label>
-                        @endslot
-                      @enddiv
+                <div class="form-check-inline">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optVisibility" value="public">Public
+                  </label>
+                </div>
 
-                      @div
-                        @slot('divClass', 'custom-control custom-radio ml-3 mb-2')
-                        @slot('slot')
-                          <input type="radio" class="custom-control-input" id="RadioOptPublic" name="" value="">
-                          <label class="custom-control-label" for="RadioOptPublic">Private</label>
-                        @endslot
-                      @enddiv
+                <div class="form-check-inline">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optVisibility" value="private">Private
+                  </label>
+                </div>
 
-                    @endslot
-                  @enddiv
-                  <!-- title publish -->
-                  <p class="ml-3 mt-2 text-gray-800">Publish</p>
-                  <input type='text' class='datepicker-here form-control w-75 ml-3 mb-3
-                  ' data-timepicker="true" data-time-format='hh:ii' data-language='en' data-position="top right" />
+              </div>
+              <!-- title publish -->
+              <p class="ml-3 mt-2 text-gray-800">Publish</p>
+              <input type='text' class='datepicker-here form-control w-75 ml-3 mb-3
+              ' data-timepicker="true" data-date-format="yyyy/mm/dd" data-time-format=' hh:ii:00' data-language='en' data-position="top right" name="postCreate" value="{{ $post->post_create }}" />
 
-                  <!-- author -->
-                  <p class="ml-3 mt-2 text-gray-800">Author</p>
-                  <select class="custom-select w-75 mb-3 ml-3" name="">
-                    <option selected></option>
-                    <option value="Yadis">Yadis</option>
-                    <option value="AdminLaen">AdminLaen</option>
-                  </select>
+              <!-- author -->
+              <p class="ml-3 mt-2 text-gray-800">Author</p>
+              <select class="custom-select w-75 mb-3 ml-3" name="postAuthor">
+                <option selected></option>
+                @foreach($user as $user)
+                  <option value="{{ $user->id_user }}">{{ $user->username }}</option>
+                @endforeach
+              </select>
+
+            </div>
+
+            <!-- categories  -->
+            <div class="card rounded shadoow ml-3 w-50 mb-3">
+              <!-- title -->
+              <div class="h6 ml-3 font-weight-bold text-gray-800 mt-3">
+                Categories & tags
+              </div>
+
+              <!-- Categories -->
+              <p class="ml-3 mt-2 text-gray-800">Categories</p>
+              <select class="custom-select w-75 mb-3 ml-3" name="postCategory" >
+                  <option selected></option>
+                  @foreach($category as $category)
+                      <option value="{{ $category->id_categories }}">{{ $category->categories_name }}</option>
+                  @endforeach
+              </select>
+
+            </div>
+
+          </div>
+          <!-- btn submit -->
+          <button type="submit" name="button" class="btn btn-primary mt-5 mb-5">Publish</button>
+
+      </form>
 
 
-                @endslot
-              @enddiv
-
-              <!-- Categories and tags -->
-              @div
-                @slot('divClass', 'card rounded shadow ml-3 w-50 mb-3')
-                @slot('slot')
-                  <!-- title  -->
-                  @div
-                    @slot('divClass', 'h6 ml-3 font-weight-bold text-gray-800 mt-3')
-                    @slot('slot')
-                      Categories & tags
-                    @endslot
-                  @enddiv
-
-                  <!-- Categories -->
-                  <p class="ml-3 mt-2 text-gray-800">Categories</p>
-                  <select class="custom-select w-75 mb-3 ml-3" name="">
-                    <option selected></option>
-                    <option value="cat1">Laravel</option>
-                    <option value="cat2">Python</option>
-                  </select>
-
-                  <!-- Tags -->
-                  <p class="ml-3 mt-2 text-gray-800">Tags</p>
-                  @div
-                    @slot('divClass','ml-3 mb-3 w-100')
-                    @slot('slot')
-                      <select class="js-example-basic-multiple custom-select  border w-75  border-secondary" multiple="multiple" name="">
-                        <option value="cat1">Laravel</option>
-                        <option value="cat2">Python</option>
-                      </select>
-                    @endslot
-                  @enddiv
-
-                @endslot
-              @enddiv
-
-              @endslot
-            @enddiv
-
-            <!-- btn submit -->
-            <button type="submit" name="button" class="btn btn-primary mt-5 mb-5">Publish</button>
-
-        @endslot
-      @endform
     </div>
   </div>
 

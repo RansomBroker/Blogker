@@ -50,6 +50,42 @@ class PostController extends Controller
 
     }
 
+    public function editPostGetId($postId){
+      $post = Post::find($postId);
+      // dd($post);
+      $user = User::get();
+      $category = Category::get();
+      $result = ['post' => $post, 'user' => $user, 'category' => $category];
+      return view('layouts.admin.partials.editPost', $result);
+    }
+
+    public function updatePost(Request $request){
+      $validate = $request->validate([
+        'postTitle' => 'required',
+        'textCkeditor' => 'required',
+        'postCreate' => 'required',
+        'postAuthor' => 'required',
+        'postCategory' => 'required',
+      ]);
+
+      $post = Post::find($request->postId);
+      $post->post_title =  $request->postTitle;
+      $post->post_content = $request->textCkeditor;
+      $post->post_visibility = $request->optVisibility;
+      $post->post_create = $request->postCreate;
+      $post->post_author = $request->postAuthor;
+      $post->post_categories = $request->postCategory;
+      $post->save();
+
+      return redirect()->route('allPosts');
+    }
+
+    public function deletePost(Request $request){
+      $deletePost = Post::findOrFail($request->id);
+      $deletePost->delete();
+      return response()->json(['success'=>'user deleted successfully']);
+    }
+
     // category
     public function categoryView(){
       $category = Category::get();

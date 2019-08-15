@@ -54,10 +54,10 @@
                 @endforeach
                 <td>Published {{ $post->post_create }}</td>
                 <td>
-                  <a href="#" class="text-primary text-decoration-none">
+                  <a href="{{ route('editPostGetId', $post->id_post) }}" class="text-primary text-decoration-none">
                     Edit &#124;
                   </a>
-                  <a href="#" class="text-danger text-decoration-none">
+                  <a href="#" id="{{ $post->id_post }}" class="deletePost text-danger text-decoration-none" data-toggle="modal" data-target="#modalDeletePost">
                     Delete &#124;
                   </a>
                 </td>
@@ -82,6 +82,24 @@
         @endtable
       </div>
 
+      <div class="modal" id="modalDeletePost">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h4>Delete Post Confirmation</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <p class="modalTextBody">Are u sure to delete this Post ?</p>
+                <button type="button" class="btnDeletePost btn btn-danger float-right" name="button">Delete</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- js -->
@@ -99,6 +117,35 @@
                 selector:'td:first-child'
             },
             order: [[ 1, 'asc' ]]
+        });
+      });
+    </script>
+    <!-- ajax delete post -->
+    <script type="text/javascript">
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      // get id
+      $('.deletePost').click(function(){
+        var id = $(this).attr('id');
+        $('.btnDeletePost').click(function(){
+          $.ajax({
+            type : 'POST',
+            url : '{{ route("deletePost") }}',
+            data: {id:id},
+            beforeSend:function(){
+              $('.modalBodyText').text('Deleting....');
+            },
+            success:function(data){
+              setTimeout(function(){
+                $('.modalBodyText').text(data.success);
+                $('.btnDeletePost').attr("disabled", true);
+                location.reload();
+              }, 2000);
+            }
+          })
         });
       });
     </script>

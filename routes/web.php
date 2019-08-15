@@ -46,9 +46,9 @@ Route::group(['middleware' => ['auth', 'authCheckRole:1, 2', 'disableBackButton'
     // search in post title/ author etc
     Route::get('/bg-admin/post/addnewpost', 'PostController@addNewPost' )->name('addNewPost');
     Route::post('/bg-admin/post/addnewpost/addPost', 'PostController@addNewPostProcess')->name('addNewPostProcess');
-    Route::get('/bg-admin/post/editpost', function(){
-        return view('layouts.admin.partials.editPost');
-    })->name('editPost');
+    Route::get('/bg-admin/post/editpost/{postId}', 'PostController@editPostGetId')->name('editPostGetId');
+    Route::post('/bg-admin/post/editpost/update', 'PostController@updatePost')->name('updatePost');
+    Route::post('/bg-admin/post/allposts/delete', 'PostController@deletePost')->name('deletePost');
     // lfm
     Route::get('/bg-admin/post/addnewpost/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
 
