@@ -8,7 +8,7 @@ use App\Page;
 
 class PageController extends Controller
 {
-    //
+    // create new page
     public function allPage(){
       $page = Page::get();
       $result = ['page' =>  $page];
@@ -40,5 +40,32 @@ class PageController extends Controller
 
       return redirect()->route('allPages');
 
+    }
+
+    // edit page
+    public function editPageView($pageId){
+      $page = Page::find($pageId);
+      $user = User::get();
+      $result = ['user' => $user, 'page' => $page];
+      return view('layouts.admin.partials.editPage', $result);
+    }
+
+    public function updatePage(Request $request){
+      $page = Page::find($request->pageId);
+      $page->page_title =  $request->pageTitle;
+      $page->page_content = $request->pageContent;
+      $page->page_visibility = $request->optVisibility;
+      $page->page_create = $request->pageCreate;
+      $page->page_author = $request->pageAuthor;
+      $page->save();
+
+      return redirect()->route('allPages');
+    }
+
+    // delete page
+    public function deletePage($pageId){
+      $page = Page::findOrFail($pageId);
+      $page->delete();
+      return redirect()->route('allPages');
     }
 }

@@ -64,6 +64,9 @@ Route::group(['middleware' => ['auth', 'authCheckRole:1, 2', 'disableBackButton'
     Route::get('/bg-admin/page/allpages', 'PageController@allPage')->name('allPages');
     Route::get('/bg-admin/page/addnewpage', 'PageController@addNewPageView')->name('addNewPage');
     Route::post('/bg-admin/page/addnewpage/process', 'PageController@addNewPageMake')->name('addNewPageProcess');
+    Route::get('/bg-admin/page/editpage/{pageId}', 'PageController@editPageView')->name('editView');
+    Route::post('/bg-admin/page/editpage/process', 'PageController@updatePage')->name('updatePage');
+    Route::get('/bg-admin/page/allpages/delete/{pageId}', 'PageController@deletePage')->name('deletePage');
     // lfm
     Route::get('/bg-admin/page/addnewpage/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
 

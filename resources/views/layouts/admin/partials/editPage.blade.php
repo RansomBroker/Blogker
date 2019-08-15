@@ -29,16 +29,19 @@
     <div class="col-xl-12">
       @form
         @slot('formClass', '')
-        @slot('formAction', '')
-        @slot('formMethod', '')
+        @slot('formAction', 'updatePage')
+        @slot('formMethod', 'POST')
         @slot('formAditional', '')
 
         @slot('slot')
+          @csrf
+          <input type="hidden" name="pageId" value="{{ $page->id_page}}">
+
             <p class="text-gray-800 font-weight-bold">Page Headline</p>
             <!-- post title -->
-            <input type="text" class="form-control mb-2" name="" value="" placeholder="Page Title">
+            <input type="text" class="form-control mb-2" name="pageTitle" value="{{ $page->page_title }}" placeholder="Page Title">
             <!-- ckeditor -->
-            <textarea name="text-ckeditor" id="text-ckeditor"></textarea>
+            <textarea name="pageContent" id="text-ckeditor">{{ $page->page_content }}</textarea>
 
             <!-- card settingg -->
             <h1 class="h4 mb-2 mt-5 font-weight-bold text-gray-800">Page Setting</h1>
@@ -67,7 +70,7 @@
                         @div
                           @slot('divClass', 'custom-control custom-radio ml-3 mb-2')
                           @slot('slot')
-                            <input type="radio" class="custom-control-input" id="RadioOptPublic" name="" value="">
+                            <input type="radio" class="custom-control-input" id="RadioOptPublic" name="optVisibility" value="public">
                             <label class="custom-control-label" for="RadioOptPublic">Public</label>
                           @endslot
                         @enddiv
@@ -75,7 +78,7 @@
                         @div
                           @slot('divClass', 'custom-control custom-radio ml-3 mb-2')
                           @slot('slot')
-                            <input type="radio" class="custom-control-input" id="RadioOptPublic" name="" value="">
+                            <input type="radio" class="custom-control-input" id="RadioOptPrivate" name="optVisibility" value="private">
                             <label class="custom-control-label" for="RadioOptPublic">Private</label>
                           @endslot
                         @enddiv
@@ -85,19 +88,19 @@
                     <!-- title publish -->
                     <p class="ml-3 mt-2 text-gray-800">Publish</p>
                     <input type='text' class='datepicker-here form-control w-75 ml-3 mb-3
-                    ' data-timepicker="true" data-time-format='hh:ii' data-language='en' data-position="top right" />
+                    ' data-timepicker="true" data-time-format='hh:ii' data-language='en' data-position="top right" name="pageCreate" value="{{ $page->page_create }}"/>
 
                     <!-- author -->
                     <p class="ml-3 mt-2 text-gray-800">Author</p>
-                    <select class="custom-select w-75 mb-3 ml-3" name="">
-                      <option selected></option>
-                      <option value="Yadis">Yadis</option>
-                      <option value="AdminLaen">AdminLaen</option>
+                    <select class="custom-select w-75 mb-3 ml-3" name="pageAuthor">
+                      @foreach($user as $user)
+                        <option value="{{ $user->id_user }}">{{ $user->username }}</option>
+                      @endforeach
                     </select>
 
                     <div class="d-flex justify-content-center">
                       <!-- btn submit -->
-                      <button type="submit" name="button" class="btn btn-primary mt-2 mb-3 w-75">Add New Page</button>
+                      <button type="submit" name="button" class="btn btn-primary mt-2 mb-3 w-75">Edit Page</button>
                     </div>
 
                   @endslot

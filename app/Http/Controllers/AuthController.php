@@ -66,7 +66,8 @@ class AuthController extends Controller
 
     public function editProfileId($userId){
       $user = User::where('id_user', $userId)->get();
-      $data = ['user' => $user];
+      $role = Role::get();
+      $data = ['user' => $user, 'role' => $role];
       return view('layouts.admin.partials.userProfile', $data);
     }
 

@@ -52,10 +52,10 @@
                 <td>Published {{$page->page_create}}</td>
                 <td>{{$page->page_visibility}}</td>
                 <td>
-                  <a href="#" class="text-primary text-decoration-none">
+                  <a href="{{ route('editView', $page->id_page) }}" class="text-primary text-decoration-none">
                     Edit &#124;
                   </a>
-                  <a href="#" class="text-danger text-decoration-none">
+                  <a href="{{ route('deletePage', $page->id_page) }}" class="text-danger text-decoration-none">
                     Delete &#124;
                   </a>
                 </td>
