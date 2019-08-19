@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Post;
 use App\Category;
@@ -37,8 +38,29 @@ class PostController extends Controller
       ]);
       // dd($request);
       // insert
+      if($request->file('postThumbnail') != null){
+        $destinationUpload = 'photos';
+        $fileUploadPicture = $request->file('postThumbnail');
+        $profilePictureName = time()."_".$fileUploadPicture->getClientOriginalName();
+        $fileUploadPicture->move($destinationUpload, $profilePictureName);
+
+        Post::create([
+          'post_title' => $request->postTitle,
+          'slug' => Str::slug($request->postTitle),
+          'post_thumbnail' => $profilePictureName,
+          'post_content' => $request->textCkeditor,
+          'post_visibility' => $request->optVisibility,
+          'post_create' => $request->postCreate,
+          'post_author' => $request->postAuthor,
+          'post_categories' => $request->postCategory,
+        ]);
+  
+        return redirect()->route('allPosts');
+      }
+
       Post::create([
         'post_title' => $request->postTitle,
+        'slug' => Str::slug($request->postTitle),
         'post_content' => $request->textCkeditor,
         'post_visibility' => $request->optVisibility,
         'post_create' => $request->postCreate,
@@ -47,6 +69,7 @@ class PostController extends Controller
       ]);
 
       return redirect()->route('allPosts');
+      
 
     }
 
@@ -70,6 +93,7 @@ class PostController extends Controller
 
       $post = Post::find($request->postId);
       $post->post_title =  $request->postTitle;
+      $post->slug = Str::slug($request->postTitle);
       $post->post_content = $request->textCkeditor;
       $post->post_visibility = $request->optVisibility;
       $post->post_create = $request->postCreate;

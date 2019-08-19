@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('blogDashboard');
+// route view
+ 
+Route::get('/', 'BlogController@home')->name('home');
+Route::get('/{post}', 'BlogController@read')->name('read');
+Route::get('/category/{category}', 'BlogController@category')->name('category');
 
 
 // auth

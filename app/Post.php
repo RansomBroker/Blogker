@@ -12,7 +12,7 @@ class Post extends Model
     protected $primaryKey = 'id_post';
 
     protected $fillable = [
-      'post_title', 'post_content', 'post_visibility', 'post_create', 'post_author', 'post_categories',
+      'post_title','slug', 'post_thumbnail' ,'post_content', 'post_visibility', 'post_create', 'post_author', 'post_categories',
     ];
     // has many categories
     // foreign keys, columns

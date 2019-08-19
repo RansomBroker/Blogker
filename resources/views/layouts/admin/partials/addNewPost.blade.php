@@ -34,11 +34,19 @@
         </div>
       @endif
 
-      <form class="" action="{{ route('addNewPostProcess') }}" method="POST">
+      <form class="" action="{{ route('addNewPostProcess') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <p class="text-gray-800 font-weight-bold">Post Headline</p>
         <!-- post title -->
         <input type="text" class="form-control mb-2" name="postTitle" value="" placeholder="Post Title">
+
+        <!-- post thumbnail -->
+        <p class="text-gray-800 font-weight-bold">Post Thumbnail</p>
+        <div class="custom-file mb-2">
+          <input type="file" class="custom-file-input" id="customFile" name="postThumbnail">
+          <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
+
         <!-- ckeditor -->
         <textarea name="textCkeditor" id="text-ckeditor"></textarea>
 
@@ -121,6 +129,13 @@
       filebrowserImageUploadUrl: 'addnewpost/laravel-filemanager/upload?type=Images&_token='+ $("input[name=_token]").val(),
       filebrowserBrowseUrl: 'addnewpost/laravel-filemanager?type=Files',
       filebrowserUploadUrl: 'addnewpost/laravel-filemanager/upload?type=Files&_token='+ $("input[name=_token]").val()
+    });
+  </script>
+  <script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function() {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
   </script>
 

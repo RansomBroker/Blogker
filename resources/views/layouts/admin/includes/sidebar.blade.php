@@ -82,7 +82,7 @@
   <hr class="sidebar-divider my-0 mt-4 mb-4">
 
   <!-- see the blog -->
-  <a href="" name="button" class="btn btn-sm btn-info ml-3 mr-3">See Blog</a>
+  <a href="{{ route('home') }}" name="button" class="btn btn-sm btn-info ml-3 mr-3">See Blog</a>
 
 </ul>
 <!-- End of Sidebar -->
